@@ -75,5 +75,23 @@ do
     else
         mkdir $x
         echo "      Creada carpeta de la asignatura $x"
+        if ! [ -f ~/.folder_aliases ]; then
+            echo "alias ${x,,}='cd $(pwd)/$x'" > ~/.folder_aliases
+
+            echo "" >> ~/.bashrc
+            echo "# Folderception's aliases definition" >> ~/.bashrc
+            echo "if [ -f ~/.folder_aliases ]; then" >> ~/.bashrc
+            echo "  . ~/.folder_aliases" >> ~/.bashrc
+            echo "fi" >> ~/.bashrc
+            if [ -f ~/.zshrc ]; then
+                    echo "" >> ~/.zshrc
+                    echo "# Folderception's aliases definition" >> ~/.zshrc
+                    echo "if [ -f ~/.folder_aliases ]; then" >> ~/.zshrc
+    	            echo "   source ~/.folder_aliases" >> ~/.zshrc
+                    echo "fi" >> ~/.zshrc
+            fi
+        else
+            echo "alias ${x,,}='cd $(pwd)/$x'" >> ~/.folder_aliases
+        fi
     fi
 done
