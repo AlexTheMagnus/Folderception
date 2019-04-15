@@ -22,18 +22,12 @@ done
 
 if [ $curso -eq 1 ]; then
     curso="Primero"
-else
-    if [ $curso -eq 2 ]; then
-        curso="Segundo"
-    else
-        if [ $curso -eq 3 ]; then
-            curso="Tercero"
-        else
-            if [ $curso -eq 4 ]; then
-                curso="Cuarto"
-            fi
-        fi
-    fi
+elif [ $curso -eq 2 ]; then
+    curso="Segundo"
+elif [ $curso -eq 3 ]; then
+    curso="Tercero"
+elif [ $curso -eq 4 ]; then
+    curso="Cuarto"
 fi
 
 if [ -d $curso ]; then
@@ -66,7 +60,7 @@ fi
 
 
 
-#Crea carpetas de las asignaturas
+#Crea carpetas de las asignaturas y los alias correspondientes
 read -p 'Asignaturas (nombres separados por espacios): ' asignaturas
 for x in $asignaturas
 do
